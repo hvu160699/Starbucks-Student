@@ -1,0 +1,21 @@
+<h2 class="page-header"><%= product.title %></h2>
+<div class="book-details">
+  <div>
+    <img class="book-cover" src="<%= product.coverImagePath %>">
+    <div class="book-details-btn-grid">
+      <a class="btn btn-primary" href="/products/<%= product.id %>/edit">Edit</a>
+      <%- include('../partials/deleteForm', { url: `/products/${product.id}` }) %>
+      <a class="btn btn-primary book-details-author-button" href="/categories/<%= product.category.id %>">View Category</a>
+    </div>
+  </div>
+  <div class="book-details-grid">
+    <div class="book-details-label">Category:</div>
+    <div><%= product.category.name %></div>
+    <div class="book-details-label">Publish Date:</div>
+    <div><%= product.publishDate.toDateString() %></div>
+    <div class="book-details-label">Price:</div>
+    <div><%= product.price %></div>
+    <div class="book-details-label">Description:</div>
+    <div><%= product.description %></div>
+  </div>
+</div>

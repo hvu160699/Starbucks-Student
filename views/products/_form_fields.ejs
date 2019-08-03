@@ -1,0 +1,41 @@
+<div class="form-row">
+  <div class="form-item">
+    <label>Title</label>
+    <input type="text" name="title" value="<%= product.title %>">
+  </div>
+  <div class="form-item">
+    <label>Category</label>
+    <select name="category">
+      <% categories.forEach(category => { %>
+        <% if (category.id === product.category) { %>
+          <option selected label="<%= category.name %>" value="<%= category.id %>">
+        <% } else { %>
+          <option label="<%= category.name %>" value="<%= category.id %>">
+        <% } %>
+      <% }) %>
+    </select>
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-item">
+    <label>Publish Date</label>
+    <input type="date" name="publishDate"
+          value="<%= product.publishDate == null ? '' : product.publishDate.toISOString().split('T')[0] %>">
+  </div>
+  <div class="form-item">
+    <label>Price</label>
+    <input type="number" name="price" value="<%= product.price %>">
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-item form-item-no-grow">
+    <label>Cover</label>
+    <input type="file" name="cover" class="book-cover filepond">
+  </div>
+  <div class="form-item">
+    <label>Description</label>
+    <textarea name="description"><%= product.description %></textarea>
+  </div>
+</div>
