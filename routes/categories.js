@@ -20,21 +20,10 @@ router.get('/', async (req, res) => {
   }
 })
 
-// Get category json list
+// Get category list json
 router.get('/listAllCategory', (req, res) => {
   Category.find().then(data => res.json(data)).catch(err => console.log(err))
 })
-
-// Delete category ID
-router.delete('/listAllCategory/delete/:id', (req, res) => {
-  Category.findByIdAndRemove(req.params.id, (err, data) => {
-    if (!err) {
-      res.send(200, { "_id": req.params._id });
-      res.json(data);
-    }
-  });
-});
-
 
 // New Category Route
 router.get('/new', (req, res) => {
