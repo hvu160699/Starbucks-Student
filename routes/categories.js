@@ -20,6 +20,21 @@ router.get('/', async (req, res) => {
   }
 })
 
+// Get category json list
+
+router.get('/listAllCategory', (req, res) => { 
+  Category.find((err, docs) => {
+      if (!err) {
+          res.writeHead(200, {"Content-Type": "application/json"});
+          res.end(JSON.stringify(docs));
+      }
+      else {
+          console.log('Error in retrieving product list:' + err)
+      }
+  })
+})
+
+
 // New Category Route
 router.get('/new', (req, res) => {
   res.render('categories/new', { category: new Category() })
