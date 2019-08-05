@@ -99,7 +99,7 @@ router.post('/api/add', (req, res, docs) => {
 
 
 router.put('/listAllCategory/update/:id', (req, res) => {
-  Product.findByIdAndUpdate({ _id: req.params.id }, req.body, { new: true }, (err, data) => {
+  Category.findByIdAndUpdate({ _id: req.params.id }, req.body, { new: true }, (err, data) => {
     if (!err) {
       res.json(data)
       console.log(data);
