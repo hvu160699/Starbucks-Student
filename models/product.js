@@ -22,7 +22,7 @@ const productSchema = new mongoose.Schema({
     default: Date.now
   },
   coverImage: {
-    type: Buffer,
+    type: String,
     required: true
   },
   coverImageType: {

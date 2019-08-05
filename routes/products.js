@@ -9,8 +9,8 @@ router.get('/listAllProduct', (req, res) => {
   Product.find().then(data => res.json(data)).catch(err => console.log(err))
 })
 
-router.get('/listAllProduct/:id', (req, res) => {
-  Category.findById({ "_id": req.params.id }).then(data => res.json(data))
+router.get('/listAllProduct/:id', async (req, res) => {
+  Product.find().populate('category').then(data => res.json(data))
 })
 
 // All Products Route
@@ -48,6 +48,7 @@ router.post('/', async (req, res) => {
     category: req.body.category,
     publishDate: new Date(req.body.publishDate),
     price: req.body.price,
+    coverImage: req.body.coverImage,
     description: req.body.description
   })
   saveCover(product, req.body.cover)
@@ -92,6 +93,7 @@ router.put('/:id', async (req, res) => {
     product.category = req.body.category
     product.publishDate = new Date(req.body.publishDate)
     product.price = req.body.price
+    product.coverImage = req.body.coverImage
     product.description = req.body.description
     if (req.body.cover != null && req.body.cover !== '') {
       saveCover(product, req.body.cover)
