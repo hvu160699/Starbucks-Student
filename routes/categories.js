@@ -87,17 +87,14 @@ router.put('/:id', async (req, res) => {
   }
 })
 
-router.put("/listAllCategory/update/:id", (req, res) => {
-  let id = req.params.id
-  Category.findByIdAndUpdate({ "_id" : id }, { "name" : req.body.name }, (err , data) => {
+router.put('/listAllCategory/update/:id', (req, res) => {
+  Product.findOneAndUpdate({ _id: req.body._id }, req.body, { new: true }, (err, data) => {
     if (!err) {
+      res.send(200, { "_id": req.params.id });
       res.json(data)
-      console.log(data);
-    } else {
-      console.log(err);
     }
-  })
-})
+  });
+});
 
 router.delete('/:id', async (req, res) => {
   let category
