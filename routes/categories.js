@@ -93,7 +93,7 @@ router.put('/listAllCategory/update/:id', (req, res) => {
   }
   Category.findByIdAndUpdate({ "_id": req.params.id }, { "name" : newName }, { new: true }, (err, data) => {
     if (!err) {
-      res.json(data)
+      data.save()
       console.log(data);
     }
   });
