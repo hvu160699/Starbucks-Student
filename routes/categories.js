@@ -89,7 +89,7 @@ router.put('/:id', async (req, res) => {
 
 router.put('/listAllCategory/update/:id', (req, res) => {
   var newName = {
-    "name" : req.body.name
+    name : req.body.name
   }
   Category.findByIdAndUpdate({ "_id": req.params.id }, { "name" : newName }, { new: true }, (err, data) => {
     if (!err) {
