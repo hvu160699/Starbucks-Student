@@ -4,6 +4,11 @@ const Product = require('../models/product')
 const Category = require('../models/category')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
 
+// List Product JSON
+router.get('/listAllProduct', (req, res) => {
+  Product.find().then(data => res.json(data)).catch(err => console.log(err))
+})
+
 // All Products Route
 router.get('/', async (req, res) => {
   let query = Product.find()

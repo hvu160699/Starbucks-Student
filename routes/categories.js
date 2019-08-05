@@ -87,14 +87,6 @@ router.put('/:id', async (req, res) => {
   }
 })
 
-router.post('/listAllCategory/update/:id', async (req, res) => {
-  Category.findByIdAndUpdate({ "_id": req.params.id}, { name : req.body.name }, (err, doc) => {
-    if (!err) console.log(doc)
-    else console.log(err)
-  })
-
-});
-
 router.delete('/:id', async (req, res) => {
   let category
   try {
