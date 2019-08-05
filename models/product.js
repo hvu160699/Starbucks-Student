@@ -27,7 +27,6 @@ const productSchema = new mongoose.Schema({
   },
   coverImageType: {
     type: String,
-    required: true
   },
   category: {
     type: mongoose.Schema.Types.ObjectId,
