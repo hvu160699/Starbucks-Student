@@ -18,7 +18,8 @@ app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
 app.use(methodOverride('_method'))
 app.use(express.static('public'))
-app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(logger('dev'));
 
 const mongoose = require('mongoose')
