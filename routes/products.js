@@ -9,6 +9,10 @@ router.get('/listAllProduct', (req, res) => {
   Product.find().then(data => res.json(data)).catch(err => console.log(err))
 })
 
+router.get('/listAllProduct/:id', (req, res) => {
+  Category.findById({ "_id": req.params.id }).then(data => res.json(data))
+})
+
 // All Products Route
 router.get('/', async (req, res) => {
   let query = Product.find()
@@ -60,8 +64,8 @@ router.post('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const product = await Product.findById(req.params.id)
-                           .populate('category')
-                           .exec()
+      .populate('category')
+      .exec()
     res.render('products/show', { product: product })
   } catch {
     res.redirect('/')
