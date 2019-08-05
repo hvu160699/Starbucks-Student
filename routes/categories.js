@@ -88,7 +88,7 @@ router.put('/:id', async (req, res) => {
 })
 
 router.put('/listAllCategory/update/:id', (req, res) => {
-  Category.findOneAndUpdate({ _id: req.body._id }, req.body, { new: true }, (err, docs) => {
+  Category.findOneAndUpdate(req.body, { new: true }, (err, docs) => {
     if (!err) {
       res.send(200, { "_id": req.params.id });
       res.end(JSON.stringify(docs));
