@@ -88,12 +88,9 @@ router.put('/:id', async (req, res) => {
 })
 
 router.put('/listAllCategory/update/:id', (req, res) => {
-  Category.findByIdAndUpdate({ "_id": req.params.id }, { "name" : req.body.name }, { new: true }, (err, data) => {
-    if (!err) {
-      res.json(data.save())
-      console.log(data);
-    }
-  });
+  Category.findByIdAndUpdate({ "_id": req.params.id }, { "name": req.body.name }, { new: true })
+    .then(data => res.json(data.save()) && console.log(data))
+    .catch(err => console.log(err))
 });
 
 router.delete('/:id', async (req, res) => {
