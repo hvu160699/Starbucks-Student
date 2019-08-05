@@ -9,9 +9,13 @@ router.get('/listAllProduct', (req, res) => {
   Product.find().then(data => res.json(data)).catch(err => console.log(err))
 })
 
-router.get('/listAllProduct/:id', async (req, res) => {
-  Product.find().populate('category').then(data => res.json(data))
-})
+// router.get('/listAllProduct/:id', async (req, res) => {
+//   let categoryId = req.params.id
+//   Product.find().
+//     populate({ path: 'category', model: Category }).
+//     exec(function (error, docs) { res.json(docs) });
+
+// })
 
 // All Products Route
 router.get('/', async (req, res) => {
