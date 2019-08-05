@@ -87,10 +87,20 @@ router.put('/:id', async (req, res) => {
   }
 })
 
+router.post('/api/add', (req, res, docs) => {
+  // res.send(200,{"_id":"abc"});
+  // res.end(JSON.stringify(docs))
+  var category = new Category();
+  category.name = req.body.name
+  category.save((docs) => {
+    res.end(JSON.stringify(docs));
+  });
+});
+
+
 router.put('/listAllCategory/update/:id', (req, res) => {
   Product.findOneAndUpdate({ _id: req.body._id }, req.body, { new: true }, (err, data) => {
     if (!err) {
-      res.send(200, { "_id": req.params.id });
       res.json(data)
     }
   });
