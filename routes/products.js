@@ -55,7 +55,7 @@ router.post('/', async (req, res) => {
     coverImage: req.body.coverImage,
     description: req.body.description
   })
-  saveCover(product, req.body.cover)
+  // saveCover(product, req.body.cover)
 
   try {
     const newProduct = await product.save()
@@ -99,9 +99,9 @@ router.put('/:id', async (req, res) => {
     product.price = req.body.price
     product.coverImage = req.body.coverImage
     product.description = req.body.description
-    if (req.body.cover != null && req.body.cover !== '') {
-      saveCover(product, req.body.cover)
-    }
+    // if (req.body.cover != null && req.body.cover !== '') {
+    //   saveCover(product, req.body.cover)
+    // }
     await product.save()
     res.redirect(`/products/${product.id}`)
   } catch {
