@@ -23,12 +23,12 @@ router.get('/', async (req, res) => {
   if (req.query.title != null && req.query.title != '') {
     query = query.regex('title', new RegExp(req.query.title, 'i'))
   }
-  if (req.query.publishedBefore != null && req.query.publishedBefore != '') {
-    query = query.lte('publishDate', req.query.publishedBefore)
-  }
-  if (req.query.publishedAfter != null && req.query.publishedAfter != '') {
-    query = query.gte('publishDate', req.query.publishedAfter)
-  }
+  // if (req.query.publishedBefore != null && req.query.publishedBefore != '') {
+  //   query = query.lte('publishDate', req.query.publishedBefore)
+  // }
+  // if (req.query.publishedAfter != null && req.query.publishedAfter != '') {
+  //   query = query.gte('publishDate', req.query.publishedAfter)
+  // }
   try {
     const products = await query.exec()
     res.render('products/index', {
@@ -50,7 +50,7 @@ router.post('/', async (req, res) => {
   const product = new Product({
     title: req.body.title,
     category: req.body.category,
-    publishDate: new Date(req.body.publishDate),
+    // publishDate: new Date(req.body.publishDate),
     price: req.body.price,
     coverImage: req.body.coverImage,
     description: req.body.description
@@ -95,7 +95,7 @@ router.put('/:id', async (req, res) => {
     product = await Product.findById(req.params.id)
     product.title = req.body.title
     product.category = req.body.category
-    product.publishDate = new Date(req.body.publishDate)
+    // product.publishDate = new Date(req.body.publishDate)
     product.price = req.body.price
     product.coverImage = req.body.coverImage
     product.description = req.body.description

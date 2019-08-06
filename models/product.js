@@ -8,9 +8,6 @@ const productSchema = new mongoose.Schema({
   description: {
     type: String
   },
-  publishDate: {
-    type: Date,
-  },
   price: {
     type: Number,
   },
