@@ -10,11 +10,9 @@ const productSchema = new mongoose.Schema({
   },
   publishDate: {
     type: Date,
-    required: true
   },
   price: {
     type: Number,
-    required: true
   },
   createdAt: {
     type: Date,
@@ -23,14 +21,12 @@ const productSchema = new mongoose.Schema({
   },
   coverImage: {
     type: String,
-    required: true
   },
   coverImageType: {
     type: String,
   },
   category: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
     ref: 'Category'
   }
 })
