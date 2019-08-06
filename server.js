@@ -11,6 +11,7 @@ const logger = require('morgan');
 const indexRouter = require('./routes/index')
 const categoryRouter = require('./routes/categories')
 const productRouter = require('./routes/products')
+const billRouter = require('./routes/bills')
 
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
@@ -33,5 +34,6 @@ db.once('open', () => console.log('Connected to Mongoose'))
 app.use('/', indexRouter)
 app.use('/categories', categoryRouter)
 app.use('/products', productRouter)
+app.use('/bills', billRouter)
 
 app.listen(process.env.PORT || 3000)
