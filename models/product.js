@@ -9,7 +9,7 @@ const productSchema = new mongoose.Schema({
     type: String
   },
   price: {
-    type: Number,
+    type: String,
   },
   createdAt: {
     type: Date,
