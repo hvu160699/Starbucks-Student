@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 
 // Get category list json
 router.get('/listAllCategory', (req, res) => {
-  Category.find().then(data => res.json(data)).catch(err => console.log(err))
+  Category.find().then(data => res.json({ categories: data })).catch(err => console.log(err))
 })
 
 // New Category Route
@@ -37,6 +37,7 @@ router.post('/', async (req, res) => {
   })
   try {
     const newCategory = await category.save()
+
     res.redirect(`categories/${newCategory.id}`)
   } catch {
     res.render('categories/new', {
